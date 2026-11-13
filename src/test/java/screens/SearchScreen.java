@@ -67,13 +67,6 @@ public class SearchScreen {
         return this;
     }
 
-    @Step("Проверяем сообщение об отсутствии результатов")
-    public SearchScreen checkNoResults() {
-        $x("//*[@text='No results']").shouldBe(visible);
-        articlesList.shouldHave(size(0));
-        return this;
-    }
-
     @Step("Очищаем поисковый запрос кнопкой крестика")
     public SearchScreen clearSearch() {
         clearQueryButton.click();

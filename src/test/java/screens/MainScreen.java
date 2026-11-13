@@ -17,12 +17,6 @@ public class MainScreen {
         return this;
     }
 
-    @Step("Открываем сохранённые статьи")
-    public MainScreen clickSavedTab() {
-        $(io.appium.java_client.AppiumBy.id("org.wikipedia.alpha:id/nav_tab_reading_lists")).click();
-        return this;
-    }
-
     @Step("Проверям, что открыт главный экран")
     public MainScreen checkMainScreenOpen() {
         mainButton.shouldBe(Condition.visible);

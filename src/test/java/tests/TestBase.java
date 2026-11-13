@@ -22,7 +22,6 @@ public class TestBase {
     MainScreen mainScreen = new MainScreen();
     SearchScreen searchScreen = new SearchScreen();
     ArticleScreen articleScreen = new ArticleScreen();
-    SavedArticlesScreen savedArticlesScreen = new SavedArticlesScreen();
 
     @BeforeAll
     static void beforeAll() {

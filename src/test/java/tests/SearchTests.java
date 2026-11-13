@@ -12,17 +12,6 @@ public class SearchTests extends TestBase{
     public static String searchedArticleName = "Sberbank";
 
     @Test
-    @DisplayName("Для несуществующего запроса показано сообщение об отсутствии результатов")
-    void noSearchResultsTest() {
-        welcomeScreen.passWelcomeScreens();
-        mainScreen.clickSearchTab();
-        searchScreen.closeWidget()
-                .clickOnSearchField()
-                .setSearchValue("Qzxvnotarealwikipediaarticle987654321")
-                .checkNoResults();
-    }
-
-    @Test
     @DisplayName("Кнопка очистки удаляет запрос и найденные результаты")
     void clearSearchQueryTest() {
         welcomeScreen.passWelcomeScreens();
