@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import drivers.BrowserstackDriver;
+import drivers.LocalDriver;
 import screens.*;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
@@ -27,12 +28,23 @@ public class TestBase {
     static void beforeAll() {
         Configuration.browserSize = null;
         Configuration.timeout = 30000;
+        String runMode = System.getProperty("runMode", "browserstack");
+        switch (runMode) {
+            case "browserstack":
+                Configuration.browser = BrowserstackDriver.class.getName();
+                break;
+            case "local":
+                Configuration.browser = LocalDriver.class.getName();
+                break;
+            default:
+                throw new IllegalArgumentException("Неизвестный runMode: " + runMode
+                        + ". Допустимые значения: local, browserstack.");
+        }
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
     @BeforeEach
     void beforeEach() {
-        Configuration.browser = BrowserstackDriver.class.getName();
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         open();
     }
 
@@ -48,7 +60,9 @@ public class TestBase {
         } finally {
             closeWebDriver();
         }
-        Attach.addVideo(sessionId);
+        if (Configuration.browser.equals(BrowserstackDriver.class.getName())) {
+            Attach.addVideo(sessionId);
+        }
     }
 
 }
