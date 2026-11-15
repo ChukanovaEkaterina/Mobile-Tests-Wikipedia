@@ -84,7 +84,7 @@ local.udid=emulator-5554
 local.appPackage=org.wikipedia.alpha
 local.appActivity=org.wikipedia.main.MainActivity
 local.appPath=build/apps/wikipedia.apk
-local.appUrl=
+local.appUrl=https://github.com/wikimedia/apps-android-wikipedia/releases/download/latest/app-alpha-universal-release.apk
 ```
 
 Для фактического локального запуска нужны Appium с UiAutomator2, Android SDK,
